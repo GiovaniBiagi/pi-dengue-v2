@@ -50,7 +50,7 @@ export const Header = () => {
           {links.map(({ href, label }) => (
             <li key={href}>
               <Link
-                href={!isHome ? / : href}
+                href={!isHome ? "/" : href}
                 onClick={() => setIsMenuOpen(false)}
                 className="block px-4 py-2 text-black text-base hover:bg-gray-200 lg:px-4 lg:py-2"
               >
