@@ -10,7 +10,7 @@ export const SymptomsSection = () => {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={symptom.image}
-              alt={`Sintomas de` ${symptom.title}}
+              alt={`Sintomas de ${symptom.title}`}
               className="w-44 object-contain"
             />
             <div className="p-4">
