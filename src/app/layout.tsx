@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
+import { Footer } from "@/components/footer/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,11 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>
-        <header className="flex items-center p-4 border-b">
-          <h1>Combate a dengue</h1>
-        </header>
+      <body className={`${inter.className} h-full`}>
         {children}
+        <Footer />
       </body>
     </html>
   );
