@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { toast } from "react-toastify";
 import { PropsWithChildren } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "../input/input";
 import { Button } from "../button/button";
+import { newsletterSubscription } from "@/services/newsletter";
 
 const Text = ({ children }: PropsWithChildren) => {
   return <p className="text-white text-center">{children}</p>;
@@ -18,8 +20,18 @@ export const Footer = () => {
   });
 
   const onSubmit = async (data: { newsletterEmail: string }) => {
-    console.log(data);
-    form.reset();
+    try {
+      await newsletterSubscription({
+        email: data.newsletterEmail,
+      });
+
+      form.reset();
+      toast.success("Inscrição realizada com sucesso!");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      console.log({ error });
+      toast.error("Erro ao se inscrever na newsletter");
+    }
   };
 
   return (
