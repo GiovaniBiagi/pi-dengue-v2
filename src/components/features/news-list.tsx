@@ -9,7 +9,12 @@ export const NewsList = () => {
   const [news, setNews] = useState<News[]>([]);
 
   const fetchNews = async () => {
-    const response = await Api.get("/news");
+    const response = await Api.get("/news", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
 
     setNews(response.data);
   };

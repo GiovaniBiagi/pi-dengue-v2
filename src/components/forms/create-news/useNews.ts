@@ -21,10 +21,19 @@ export const useNews = () => {
   const create = async (data: CreateNewsData) => {
     setIsLoading(true);
     try {
-      const response = await Api.post("/news", {
-        ...data,
-        authorId: userId,
-      });
+      const response = await Api.post(
+        "/news",
+        {
+          ...data,
+          authorId: userId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       return response.data;
     } catch (error: unknown) {
