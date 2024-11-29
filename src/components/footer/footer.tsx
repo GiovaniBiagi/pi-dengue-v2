@@ -4,7 +4,7 @@ import Link from "next/link";
 import { toast } from "react-toastify";
 import { PropsWithChildren } from "react";
 import { useForm } from "react-hook-form";
-import { Input } from "../input/input";
+import { Input } from "../ui/input";
 import { Button } from "../button/button";
 import { newsletterSubscription } from "@/services/newsletter";
 

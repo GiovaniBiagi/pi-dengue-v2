@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 import { LoginData, loginSchema } from "./schema";
 import { useLogin } from "./useLogin";
-import { Input } from "@/components/input/input";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/button/button";
 
 const defaultValues = {
