@@ -29,7 +29,6 @@ export const Footer = () => {
       toast.success("Inscrição realizada com sucesso!");
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.log({ error });
       toast.error("Erro ao se inscrever na newsletter");
     }
   };

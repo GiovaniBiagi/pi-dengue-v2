@@ -1,14 +1,14 @@
 import { toast } from "react-toastify";
-import { LoginData } from "./schema";
+import { RegisterData } from "./schema";
 import Api, { type Error } from "@/lib/api";
 import { useState } from "react";
 
-export const useLogin = () => {
+export const useRegister = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const login = async (data: LoginData) => {
+  const register = async (data: RegisterData) => {
     setIsLoading(true);
     try {
-      const response = await Api.post("/auth/login", data);
+      const response = await Api.post("/auth/register", data);
 
       return response.data;
     } catch (error: unknown) {
@@ -18,5 +18,5 @@ export const useLogin = () => {
     }
   };
 
-  return { login, isLoading };
+  return { register, isLoading };
 };

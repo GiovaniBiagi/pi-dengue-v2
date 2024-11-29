@@ -11,15 +11,14 @@ type InputProps = {
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, labelStyle, error, ...props }, ref) => {
     return (
-      <>
+      <div>
         {label && (
-          <label htmlFor={props.id} className={`block ${labelStyle}`}>
+          <label htmlFor={props.id} className={labelStyle}>
             {label}
           </label>
         )}
         <input
           ref={ref}
-          type="email"
           id="email"
           className={clsx("w-full px-4 py-2 border border-gray-300 rounded", {
             "border-red-500": Boolean(error),
@@ -27,7 +26,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {error && <span className="text-red-500">{error.message}</span>}
-      </>
+      </div>
     );
   }
 );

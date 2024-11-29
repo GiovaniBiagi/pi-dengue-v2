@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { LoginData, loginSchema } from "./schema";
 import { useLogin } from "./useLogin";
 import { Input } from "@/components/input/input";
+import { Button } from "@/components/button/button";
 
 const defaultValues = {
   email: "",
@@ -13,7 +14,7 @@ const defaultValues = {
 };
 
 export const LoginForm = () => {
-  const { login } = useLogin();
+  const { login, isLoading } = useLogin();
   const form = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues,
@@ -29,6 +30,7 @@ export const LoginForm = () => {
           <div>
             <Input
               label="E-mail"
+              type="email"
               {...form.register("email")}
               error={form.formState.errors.email}
             />
@@ -41,9 +43,12 @@ export const LoginForm = () => {
               error={form.formState.errors.password}
             />
           </div>
-          <button className="w-full py-2 px-4 text-white bg-red-500 rounded hover:bg-red-600">
-            Entrar
-          </button>
+          <Button
+            variant="primary"
+            label="Entrar"
+            loading={isLoading}
+            disabled={isLoading}
+          />
         </form>
       </div>
     </div>

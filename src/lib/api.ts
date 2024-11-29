@@ -5,7 +5,7 @@ export interface Error extends AxiosError {
 }
 
 const instance = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
 export default instance;

@@ -63,7 +63,9 @@ export const Header = () => {
               <Link href="/login" onClick={() => setIsMenuOpen(false)}>
                 <Button variant="outline" label="Login" />
               </Link>
-              <Button variant="primary" label="Cadastrar" />
+              <Link href="/register" onClick={() => setIsMenuOpen(false)}>
+                <Button variant="primary" label="Cadastre-se" />
+              </Link>
             </div>
           </li>
         </ul>

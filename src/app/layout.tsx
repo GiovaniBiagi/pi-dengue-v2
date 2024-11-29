@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
-import { Footer } from "@/components/footer/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,11 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={`${inter.className} h-full`}>
-        {children}
-        <Footer />
-      </body>
+    <html lang="pt-BR" className="scroll-smooth">
+      <body className={`${inter.className} h-full`}>{children}</body>
     </html>
   );
 }

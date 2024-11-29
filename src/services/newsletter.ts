@@ -5,7 +5,4 @@ export type NewsletterBody = {
 };
 
 export const newsletterSubscription = async (body: NewsletterBody) =>
-  Api.post(
-    "https://api-dengue-v2.onrender.com/api/v1/newsletter/subscribe",
-    body
-  );
+  Api.post("/newsletter/subscribe", body);
