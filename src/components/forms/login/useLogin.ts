@@ -13,7 +13,7 @@ export const useLogin = () => {
     if (token) {
       router.push("/news");
     }
-  }, []);
+  }, [router]);
 
   const login = async (data: LoginData) => {
     setIsLoading(true);

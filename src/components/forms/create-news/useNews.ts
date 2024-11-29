@@ -3,25 +3,31 @@ import { CreateNewsData } from "./schema";
 import Api from "@/lib/api";
 import { useEffect, useState } from "react";
 import { me } from "@/services/user/me";
+import { useRouter } from "next/navigation";
 
 export const useNews = () => {
+  const router = useRouter();
   const [userId, setUserId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const fetcUserInfo = async () => {
     const response = await me();
-    console.log(response.data);
     setUserId(response.data.id);
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      router.push("/");
+    }
+
     fetcUserInfo();
-  }, []);
+  }, [router]);
 
   const create = async (data: CreateNewsData) => {
     setIsLoading(true);
     try {
-      const response = await Api.post(
+      await Api.post(
         "/news",
         {
           ...data,
@@ -35,7 +41,11 @@ export const useNews = () => {
         }
       );
 
-      return response.data;
+      toast.success("Notícia criada com sucesso", {
+        onClose: () => {
+          router.push("/news");
+        },
+      });
     } catch (error: unknown) {
       toast.error((error as Error).message);
     } finally {
